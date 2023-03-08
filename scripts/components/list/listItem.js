@@ -8,8 +8,9 @@
  */
 export default function ({ id, name, owner, stars }) {
     const li = document.createElement('li');
+    li.className = 'saves__item item';
+    li.setAttribute('data-id', id);
     li.innerHTML = `
-    <li class="saves__item item" data-id="${id}">
         <div class="item__content">
             <ul class="item__list">
                 <li class="item__item">Name: ${name}</li>
@@ -19,7 +20,6 @@ export default function ({ id, name, owner, stars }) {
         </div>
         <div class="item__element">
             <button class="item__button button">×</button>
-        </div>
-    </li>`;
+        </div>`;
     return li;
 }
