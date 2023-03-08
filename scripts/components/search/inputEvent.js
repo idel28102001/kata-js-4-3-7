@@ -1,10 +1,12 @@
 import debounce from "../../common/debounce.js";
+import clearSearchList from "./clearSearchList.js";
 import getItems from "./getItems.js";
 
 /**
  * @param {Element} element
  */
-export default (element) => {
+export default (github) => {
+    const element = github.querySelector('.dropdown__input');
     /**
      * 
      * @param {KeyboardEvent} event 
@@ -12,6 +14,7 @@ export default (element) => {
     const filter = (event) => {
         const input = event.target;
         const filterWord = input.value.trim();
+        if (!filterWord) return clearSearchList(github);
         const div = input.nextElementSibling;
         div.innerHTML = '';
         getItems(filterWord).then(items => {

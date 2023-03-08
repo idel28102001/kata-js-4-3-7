@@ -1,6 +1,7 @@
 import addItem from "../../loads/addItem.js";
 import listItem from "../list/listItem.js";
 import parser from "../list/parser.js";
+import clearSearchList from "./clearSearchList.js";
 
 /**
  * @param {Element} nodeElement
@@ -15,11 +16,10 @@ export default (nodeElement, savesList) => {
         if (!event.target) return;
         const curr = event.target;
         if (!curr.closest('.dropdown__item')) return;
-        const parent1 = event.target.parentElement;
-        const parent2 = parent1.parentElement;
-        const input = parent2.querySelector('.dropdown__input');
+        const parent = event.target.parentElement.parentElement;
+        const input = parent.querySelector('.dropdown__input');
         input.value = '';
-        parent1.innerHTML = '';
+        clearSearchList(nodeElement);
         const object = parser(curr);
         const item = listItem(object);
         savesList.append(item);
