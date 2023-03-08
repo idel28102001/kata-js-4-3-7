@@ -21,6 +21,6 @@ export default (github) => {
             div.append(items);
         });
     }
-    const filerDeb = debounce(filter, 300);
+    const filerDeb = debounce(filter, 400);
     element.addEventListener('keyup', filerDeb);
 }
